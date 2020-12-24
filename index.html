@@ -10,7 +10,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="weather-app-wrapper">
         <div class="weather-app">
+            <div class="overview">
         <h1>
         Greenville, SC, USA
         </h1>
@@ -22,10 +24,19 @@
                     Partly Cloudy
                 </li>
             </ul>
+        </div> 
         <div class="row">
             <div class="col-6">
-                <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt="Partly Cloudy"/>
-                46°F | °C
+                <div class="clearfix weather-temperature">
+                <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
+                alt="Partly Cloudy"
+                class="float-left"
+                />
+                <div class="float-left">
+                    <strong>46</strong><span class="units">°C | <a href="#">°F</a>
+                    </span>                
+                </div>
+            </div>
             </div>
             <div class="col-6">
                 <ul>
@@ -41,11 +52,13 @@
             </ul>
         </div>
         </div>
-        <small>
-            <a href = "https://github.com/alkellett87/WeatherApp" target="_blank">
-                Open Source Code</a> by Ann Louise Kellett
-        </small>
-        </div>
+        
+    </div>
+    <small>
+        <a href="https://github.com/alkellett87/WeatherApp" target="_blank">
+            Open Source Code</a> by Ann Louise Kellett
+    </small>
+    </div>
     </div>
     <script src="app.js"></script>
 </body>
