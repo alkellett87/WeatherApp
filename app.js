@@ -15,8 +15,9 @@ function formatDate(timestamp){
 
 function displayTemperature(response){
 
+    celsiusTemperature=response.data.main.temp;
     let temperatureElement=document.querySelector("#temperature");
-    temperatureElement.innerHTML= Math.round (response.data.main.temp);
+    temperatureElement.innerHTML= Math.round (celsiusTemperature);
     
     let cityElement=document.querySelector("#city");
     cityElement.innerHTML=response.data.name;
@@ -36,11 +37,12 @@ function displayTemperature(response){
     let weatherIconElement=document.querySelector("#weatherIcon");
     weatherIconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
     weatherIconElement.setAttribute("alt",response.data.weather[0].description);
+
 }
 
 function search(city){
 let apiKey="fd8290157d5eeba71b9dabe5d7447fd1";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fd8290157d5eeba71b9dabe5d7447fd1&units=imperial`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fd8290157d5eeba71b9dabe5d7447fd1&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
 }
@@ -50,6 +52,20 @@ function handleSubmit(event){
     let cityInputElement=document.querySelector("#cityInput");
     search(cityInputElement.value);
 }
+function displayFahrenheitTemperature(event){
+    event.preventDefault();
+    let temperatureElement=document.querySelector("#temperature");
+    let fahrenheitTemperature=(celsiusTemperature*9)/5+32;
+    temperatureElement.innerHTML=Math.round(fahrenheitTemperature);
+}
+
+
+let celsiusTemperature=null;
 
 let form=document.querySelector("#citySearchForm");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink=document.querySelector("#fahrenheitLink");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+search("New York");
