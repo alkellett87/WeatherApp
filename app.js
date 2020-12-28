@@ -41,7 +41,7 @@ function displayTemperature(response){
 }
 
 let apiKey="fd8290157d5eeba71b9dabe5d7447fd1";
-let city = "Paris";
+let city = "Sydney";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fd8290157d5eeba71b9dabe5d7447fd1&units=imperial`;
 
 axios.get(apiUrl).then(displayTemperature);
